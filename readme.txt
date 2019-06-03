@@ -1,7 +1,13 @@
+launcing
 
 gcloud container clusters create forbes-nginxx \
  --num-nodes=3 --zone us-central1-a --machine-type=custom-2-12288
 ============================
+
+resizing
+
+gcloud container clusters resize forbes-nginxx --size=0 --zone us-central1-a
+===============================
 
 gcloud compute firewall-rules create your-name-for-this-fw-rule --allow tcp:80,tcp:443 --source-ranges=0.0.0.0/0
 
