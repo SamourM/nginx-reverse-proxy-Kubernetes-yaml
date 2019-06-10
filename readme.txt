@@ -64,14 +64,15 @@ apply basic-ingress.yaml
 note:: apply the deployment then the service then the ingree 
 
 
+gcloud compute firewall-rules create your-name-for-this-fw-rule --allow tcp:80,tcp:443 --source-ranges=0.0.0.0/0
 
 or
- instead all of above do this one command:
+ instead all of above apply this one command:
 
-kubectl expose deployment mysql --port 3306 --target-port 3307 --type="LoadBalancer"
+********   kubectl expose deployment mysql --port 3306 --target-port 3307 --type="LoadBalancer"  ********
 
 
-gcloud compute firewall-rules create your-name-for-this-fw-rule --allow tcp:80,tcp:443 --source-ranges=0.0.0.0/0
+
 
 *******************
 
