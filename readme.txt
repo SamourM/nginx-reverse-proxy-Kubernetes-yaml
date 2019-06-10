@@ -74,3 +74,51 @@ kubectl expose deployment mysql --port 3306 --target-port 3307 --type="LoadBalan
 gcloud compute firewall-rules create your-name-for-this-fw-rule --allow tcp:80,tcp:443 --source-ranges=0.0.0.0/0
 
 *******************
+
+
+=========================================================
+
+
+
+PHP FastCGI Process Manager (PHP-FPM) is an alternative FastCGI daemon for PHP that allows a website to handle high loads. 
+
+=========================================================
+
+
+Supervisord or Supervisor daemon is an open source process management system. In a nutshell: if a process crashes for any reason, Supervisor restarts it. From the Supervisord website:[1] 
+=========================================================
+
+
+
+https://github.com/makasim/docker-nginx-php-fpm-supervisor
+
+=========================================================
+
+
+When using the Nginx web server, you can use server blocks (similar to virtual hosts in Apache) to encapsulate configuration details and host more than one domain from a single server.
+
+=========================================================
+
+
+Nginx is not able to talk to PHP directly but through FPM protocol so we also have to run PHP-FPM service
+
+=========================================================
+
+https://websiteforstudents.com/install-wordpress-4-9-on-ubuntu-17-04-7-10-with-nginx-mariadb-and-php/
+
+
+========================================================
+
+Start Here:
+
+https://websiteforstudents.com/install-nginx-mariadb-php-fpm-lemp-ubuntu-17-10/
+https://websiteforstudents.com/install-wordpress-4-9-on-ubuntu-17-04-7-10-with-nginx-mariadb-and-php/
+========================================================
+
+https://luoluca.wordpress.com/2015/01/07/hosting-php-nginx-supervisor-with-docker/
+
+
+try_files $uri $uri/ /index.php?q=$uri&$args; 
+
+
+
