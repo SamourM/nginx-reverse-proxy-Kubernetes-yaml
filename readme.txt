@@ -1,36 +1,33 @@
-launcing
+*Launching a cluster on GCP:
 
 gcloud container clusters create forbes-nginxx \
  --num-nodes=3 --zone us-central1-a --machine-type=custom-2-12288
-============================
+===========================================================================================================
 
-resizing
+*Resizing a cluster on GCP:
 
 gcloud container clusters resize forbes-nginxx --size=0 --zone us-central1-a
-===============================
+===========================================================================================================
+
+*Adding Firewall rule to allow traffic from outside.
 
 gcloud compute firewall-rules create your-name-for-this-fw-rule --allow tcp:80,tcp:443 --source-ranges=0.0.0.0/0
 
-=========================================
+===========================================================================================================
 
-
-
-
-
-
+*Push to docker hub
 
 https://ropenscilabs.github.io/r-docker-tutorial/04-Dockerhub.html   local repo push.
 
 ==================================================
+*kompose installation 
 
 
-
-https://github.com/kubernetes/kompose kompose installation 
-
+https://github.com/kubernetes/kompose 
 
 =====================================================
 
-you need to route external traffic to the service.
+you need to route external traffic to the service, write a basic ingress. (not the best practice though).
 basic ingress:
 
 apiVersion: extensions/v1beta1
@@ -42,39 +39,30 @@ spec:
     serviceName: rev-proxy
     servicePort: 80
 
-========================================
+===================================================================================================
 
+*To expose k8s service, after deployng deployment and service, please:
 
-kubectl get ing >> get cluster IP.
-kubectl get pods
-kubectl get nodes
-===============
+*make sure you added type: Nodeport on service.yaml
 
+*apply basic-ingress.yaml
 
-*****************
-this is very fff******* important:
+*note: apply the deployment then the service then the ingree 
 
-
-To expose k8s service, after deployng deployment and service, please:
-
-make sure you added type: Nodeport on service.yaml
-
-apply basic-ingress.yaml
-
-note:: apply the deployment then the service then the ingree 
-
-
-gcloud compute firewall-rules create your-name-for-this-fw-rule --allow tcp:80,tcp:443 --source-ranges=0.0.0.0/0
+*gcloud compute firewall-rules create your-name-for-this-fw-rule --allow tcp:80,tcp:443 --source-ranges=0.0.0.0/0
 
 or
- instead all of above apply this one command:
+
+*instead all of above apply this one command:
 
 ********   kubectl expose deployment mysql --port 3306 --target-port 3307 --type="LoadBalancer"  ********
 
 
+===========================================================================================================
 
+*Get cluster IP
 
-*******************
+kubectl get ing >> get cluster IP.
 
 
 =========================================================
@@ -113,13 +101,11 @@ https://websiteforstudents.com/install-wordpress-4-9-on-ubuntu-17-04-7-10-with-n
 Start Here:
 
 https://websiteforstudents.com/install-nginx-mariadb-php-fpm-lemp-ubuntu-17-10/
+
 https://websiteforstudents.com/install-wordpress-4-9-on-ubuntu-17-04-7-10-with-nginx-mariadb-and-php/
-========================================================
 
 https://luoluca.wordpress.com/2015/01/07/hosting-php-nginx-supervisor-with-docker/
 
-
-try_files $uri $uri/ /index.php?q=$uri&$args; 
-
+========================================================================================================================
 
 
